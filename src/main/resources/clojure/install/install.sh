@@ -12,8 +12,8 @@ mkdir -p "$prefix/libexec"
 cp ./*.jar "$prefix/libexec"
 
 # scripts
-${HOMEBREW_RUBY_PATH} -pi.bak -e "gsub(/PREFIX/, '$prefix')" clojure
-${HOMEBREW_RUBY_PATH} -pi.bak -e "gsub(/BINDIR/, '$prefix/bin')" clj
+sed -i -e 's@PREFIX@'"$prefix"'@g' clojure
+sed -i -e 's@BINDIR@'"$prefix/bin"'@g' clj
 mkdir -p "$prefix/bin"
 cp clojure "$prefix/bin"
 cp clj "$prefix/bin"
